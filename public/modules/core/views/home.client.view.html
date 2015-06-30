@@ -1,0 +1,10 @@
+<section data-ng-controller="HomeController">
+	<div>
+		<table class="myTable">
+			<tr ng-repeat="x in vars ">
+				<td style="{{functionThatReturnsStyle()}}">{{ x.name }}</td>
+				<td>{{ x.value }}</td>
+			</tr>
+		</table>
+	</div>
+</section>

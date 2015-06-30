@@ -1,0 +1,31 @@
+<section data-ng-controller="StatusesController">
+    <table class="myTable">
+        <tr>
+            <th ng-repeat="col in colNames">{{col}}</th>
+        </tr>
+        <tr>
+            <td style="{{returnRedGreenStyle(stati[0])}}">{{rowNames[0]}}</td>
+            <td ng-repeat="t in nivars ">{{t.value}}</td>
+        </tr>
+        <tr>
+            <td style="{{returnRedGreenStyle(stati[1])}}">{{rowNames[1]}}</td>
+            <td ng-repeat="t in mevars ">{{t.value}}</td>
+        </tr>
+        <tr>
+            <td style="{{returnRedGreenStyle(stati[2])}}">{{rowNames[2]}}</td>
+            <td ng-repeat="t in cuvars ">{{t.value}}</td>
+        </tr>
+        <tr>
+            <td style="{{returnRedGreenStyle(stati[3])}}">{{rowNames[3]}}</td>
+            <td ng-repeat="t in si1vars ">{{t.value}}</td>
+        </tr>
+        <tr>
+            <td style="{{returnRedGreenStyle(stati[4])}}">{{rowNames[4]}}</td>
+            <td ng-repeat="t in si2vars ">{{t.value}}</td>
+        </tr>
+        <tr>
+            <td style="{{returnRedGreenStyle(stati[5])}}">{{rowNames[5]}}</td>
+            <td ng-repeat="t in revars ">{{t.value}}</td>
+        </tr>
+    </table>
+</section>
