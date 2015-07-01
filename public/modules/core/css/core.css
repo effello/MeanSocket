@@ -2,13 +2,17 @@ body{
 	color: white;
 	background-color: black;
 }
+
 .content {
 	font-size: 12px;
 }
+.display{
+	width: 382px;
+}
 .container{
 	width: 100%;
-	padding-left: 0px;
-	padding-right: 0px;
+	padding-left: 0;
+	padding-right: 0;
 }
 .undecorated-link:hover {
 	text-decoration: none;
@@ -21,4 +25,54 @@ body{
 }
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
+}
+
+table, tr {
+	border: 1px white;
+	border-style: solid;
+	text-align: center;
+}
+tr{
+	max-height: 21px;
+}
+td{
+	padding-left: 1px;
+	min-width: 50px;
+	width: 63px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+}
+.ni-header{
+	background-color: #0000FF;
+}
+.cu-header{
+	background-color: #FF4600;
+}
+.ms-header{
+	background-color: #ffff00;
+}
+.sh1-header{
+	background-color: #64ff00;
+}
+.sh2-header{
+	background-color: #00b800;
+}
+.sp-header{
+	background-color: #ff00ff;
+}
+.header {
+	color: #2B2922;
+}
+.myTable2{
+	float: left;
+	margin-top: -1px;
+}
+.message{
+	float: left;
+}
+.clock{
+	float: right;
+	width: 63px;
 }

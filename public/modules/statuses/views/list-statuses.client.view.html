@@ -4,28 +4,33 @@
             <th ng-repeat="col in colNames">{{col}}</th>
         </tr>
         <tr>
-            <td style="{{returnRedGreenStyle(stati[0])}}">{{rowNames[0]}}</td>
+            <td class="ni-header header">{{rowNames[0]}}</td>
             <td ng-repeat="t in nivars ">{{t.value}}</td>
         </tr>
         <tr>
-            <td style="{{returnRedGreenStyle(stati[1])}}">{{rowNames[1]}}</td>
-            <td ng-repeat="t in mevars ">{{t.value}}</td>
-        </tr>
-        <tr>
-            <td style="{{returnRedGreenStyle(stati[2])}}">{{rowNames[2]}}</td>
+            <td class="cu-header header">{{rowNames[1]}}</td>
             <td ng-repeat="t in cuvars ">{{t.value}}</td>
         </tr>
         <tr>
-            <td style="{{returnRedGreenStyle(stati[3])}}">{{rowNames[3]}}</td>
+            <td class="ms-header header">{{rowNames[2]}}</td>
+            <td ng-repeat="t in mevars ">{{t.value}}</td>
+        </tr>
+
+    </table>
+    <table>
+        <tr>
+            <td class="sh1-header header">{{rowNames[3]}}</td>
             <td ng-repeat="t in si1vars ">{{t.value}}</td>
         </tr>
         <tr>
-            <td style="{{returnRedGreenStyle(stati[4])}}">{{rowNames[4]}}</td>
+            <td class="sh2-header header">{{rowNames[4]}}</td>
             <td ng-repeat="t in si2vars ">{{t.value}}</td>
         </tr>
         <tr>
-            <td style="{{returnRedGreenStyle(stati[5])}}">{{rowNames[5]}}</td>
-            <td ng-repeat="t in revars ">{{t.value}}</td>
+            <td class="sp-header header">{{rowNames[5]}}</td>
+            <td ng-repeat="t in spvars ">{{t.value}}</td>
         </tr>
     </table>
+    <div id="message"></div>
+    <div id="clock"><ds-widget-clock theme="dark" show-secs="true" show-analog="true"></ds-widget-clock></div>
 </section>

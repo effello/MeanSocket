@@ -7,6 +7,12 @@ angular.module('statuses').controller('StatusesController', ['Socket', '$scope',
 //-----------------------------------------Scope Vars----------------------------------------------------
 		$scope.authentication = Authentication;
 		$scope.vars = [];
+		$scope.time = '';
+		$scope.checkTime = function(i){
+			if (i<10) {i = "0" + i};  // add zero in front of numbers < 10
+			return i;
+		};
+
 		$scope.stati = [
 			0,
 			1,
@@ -16,76 +22,50 @@ angular.module('statuses').controller('StatusesController', ['Socket', '$scope',
 			2
 		];
 		$scope.nivars = [
-			{	name: "",value: "0,0"	},
-			{	name: "",value: "1,0"	},
-			{	name: "",value: "2,0"	},
-			{	name: "",value: "3,0"	},
-			{	name: "",value: "4,0"	},
-			{	name: "",value: "5,0"	},
-			{	name: "",value: "6,0"	}
-		];
-		$scope.mevars = [
-			{	name: "",value: "00,0"	},
-			{	name: "",value: "11,0"	},
-			{	name: "",value: "22,0"	},
-			{	name: "",value: "33,0"	},
-			{	name: "",value: "44,0"	},
-			{	name: "",value: "55,0"	},
-			{	name: "",value: "66,0"	}
+			{	name: '',value: '0,0'	},
+			{	name: '',value: '1,0'	},
+			{	name: '',value: '2,0'	},
+			{	name: '',value: '3,0'	},
+			{	name: '',value: '4,0'	}
 		];
 		$scope.cuvars = [
-			{	name: "",value: "000,0"	},
-			{	name: "",value: "111,0"	},
-			{	name: "",value: "222,0"	},
-			{	name: "",value: "333,0"	},
-			{	name: "",value: "444,0"	},
-			{	name: "",value: "555,0"	},
-			{	name: "",value: "666,0"	}
+			{	name: '',value: '00,0'	},
+			{	name: '',value: '11,0'	},
+			{	name: '',value: '22,0'	},
+			{	name: '',value: '33,0'	},
+			{	name: '',value: '44,0'	}
+		];
+		$scope.mevars = [
+			{	name: '',value: '000,0'	},
+			{	name: '',value: '111,0'	},
+			{	name: '',value: '222,0'	},
+			{	name: '',value: '333,0'	},
+			{	name: '',value: '444,0'	}
 		];
 		$scope.si1vars = [
-			{	name: "",value: "0000,0"	},
-			{	name: "",value: "1111,0"	},
-			{	name: "",value: "2222,0"	},
-			{	name: "",value: "3333,0"	},
-			{	name: "",value: "4444,0"	},
-			{	name: "",value: "5555,0"	},
-			{	name: "",value: "6666,0"	}
+			{	name: '',value: '0000,0'	}
 		];
 		$scope.si2vars = [
-			{	name: "",value: "00000,0"	},
-			{	name: "",value: "11111,0"	},
-			{	name: "",value: "22222,0"	},
-			{	name: "",value: "33333,0"	},
-			{	name: "",value: "44444,0"	},
-			{	name: "",value: "55555,0"	},
-			{	name: "",value: "66666,0"	}
+			{	name: '',value: '00000,0'	}
 		];
-		$scope.revars = [
-			{	name: "",value: "000000,0"	},
-			{	name: "",value: "111111,0"	},
-			{	name: "",value: "222222,0"	},
-			{	name: "",value: "333333,0"	},
-			{	name: "",value: "444444,0"	},
-			{	name: "",value: "555556,0"	},
-			{	name: "",value: "666666,0"	}
+		$scope.spvars = [
+			{	name: '',value: '000000,0'	}
 		];
 		$scope.rowNames = [
-			"Nickel",
-			"Messing",
-			"Kupfer",
-			"Schere 1",
-			"Schere 2",
-			"Spuler"
+			'Nickel',
+			'Kupfer',
+			'Messing',
+			'Schere 1',
+			'Schere 2',
+			'Spuler'
 			];
 		$scope.colNames = [
-			"",
-			"Geschw.",
-			"Strom",
-			"Schicht O",
-			"Schicht 1",
-			"Coil #",
-			"Reserve0",
-			"Reserve1"
+			'',
+			'Geschw.',
+			'Breite',
+			'Dicke',
+			'Coil #',
+			'Wechsel'
 			];
 
 //-----------------------------------------Controller Functions------------------------------------------
@@ -93,7 +73,7 @@ angular.module('statuses').controller('StatusesController', ['Socket', '$scope',
 			if (data.length >0){
 				for (var i=0; i<data.length;i++){
 					var Var = {
-						name: "Wert"+(i+1),
+						name: 'Wert'+(i+1),
 						value: data[i]
 					};
 					$scope.vars.push(Var);
@@ -104,23 +84,41 @@ angular.module('statuses').controller('StatusesController', ['Socket', '$scope',
 			//console.log("got new Data:" +data);
 			if (data.length >0){
 				for (var i=0; i<data.length;i++){
-					if(i<7){
+					if(i<3){
 						$scope.nivars[i].value = data[i];
 					}
-					if(i>6 && i<14){
-						$scope.mevars[i-7].value = data[i];
+					if(i===3){
+						$scope.nivars[i].value = data[i]+' '+data[i+1]+' '+data[i+2];
 					}
-					if(i>13 && i<21){
-						$scope.cuvars[i-14].value = data[i];
+					if(i===6){
+						$scope.nivars[i-2].value = $scope.checkTime(data[i])+ ' : '+ $scope.checkTime(data[i+1]);
 					}
-					if(i>20 && i<28){
-						$scope.si1vars[i-21].value = data[i];
+					if(i>7 && i<11){
+						$scope.cuvars[i-8].value = data[i];
 					}
-					if(i>27 && i<35){
-						$scope.si2vars[i-28].value = data[i];
+					if(i===11){
+						$scope.cuvars[i-8].value = data[i]+' '+data[i+1]+' '+data[i+2];
 					}
-					if(i>34 && i<42){
-						$scope.revars[i-35].value = data[i];
+					if(i===14){
+						$scope.cuvars[i-10].value =  $scope.checkTime(data[i])+' : '+ $scope.checkTime(data[i+1]);
+					}
+					if(i>15 && i<19){
+						$scope.mevars[i-16].value = data[i];
+					}
+					if(i===19){
+						$scope.mevars[i-16].value = data[i]+' '+data[i+1]+' '+data[i+2];
+					}
+					if(i===22){
+						$scope.mevars[i-18].value =  $scope.checkTime(data[i])+' : '+ $scope.checkTime(data[i+1]);
+					}
+					if(i>23 && i<25){
+						$scope.si1vars[i-24].value = data[i];
+					}
+					if(i>24 && i<26){
+						$scope.si2vars[i-25].value = data[i];
+					}
+					if(i>25 && i<27){
+						$scope.spvars[i-26].value = data[i];
 					}
 				}
 
@@ -139,12 +137,14 @@ angular.module('statuses').controller('StatusesController', ['Socket', '$scope',
 
 //-----------------------------------------Color Styles-------------------------------------------
 		$scope.returnRedGreenStyle = function(status) {
-			if(status==0)
-				return "background-color: green;";
-			if(status==1)
-				return "background-color: rgb(0, 75, 255);";
-			if(status==2)
-				return "background-color: red;";
+			if(status===0)
+				return 'background-color: green;';
+			if(status===1)
+				return 'background-color: rgb(0, 75, 255);';
+			if(status===2)
+				return 'background-color: red;';
+
+			// ADD THIS TO THE VIEW STYLE ATTRIBUTE {{returnRedGreenStyle(stati[0])}}
 		};
 //-----------------------------------------Mongoose Functions-------------------------------------
 		// Create new Status
@@ -204,5 +204,6 @@ angular.module('statuses').controller('StatusesController', ['Socket', '$scope',
 				statusId: $stateParams.statusId
 			});
 		};
+
 	}
 ]);

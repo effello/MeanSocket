@@ -74,10 +74,10 @@ exports.delete = function(req, res) {
  */
 exports.list = function(req, res) {
 
-	var WinCCData = ""+req.app.get('WinCCData');
+	var WinCCData = ''+req.app.get('WinCCData');
 	var resArray = [];
 	var Vars = [];
-	if(WinCCData != ""){
+	if(WinCCData !== ''){
 		WinCCData = WinCCData.split(/\r\n|\n/);
 		Vars = WinCCData[0].split(',');
 		for (var i=0; i<Vars.length;i++){

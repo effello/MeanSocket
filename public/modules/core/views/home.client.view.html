@@ -1,10 +1,38 @@
 <section data-ng-controller="HomeController">
-	<div>
+	<div class="display">
 		<table class="myTable">
-			<tr ng-repeat="x in vars ">
-				<td style="{{functionThatReturnsStyle()}}">{{ x.name }}</td>
-				<td>{{ x.value }}</td>
+			<tr>
+				<th ng-repeat="col in colNames">{{col}}</th>
+			</tr>
+			<tr>
+				<td class="ni-header header">{{rowNames[0]}}</td>
+				<td ng-repeat="t in nivars ">{{t.value}}</td>
+			</tr>
+			<tr>
+				<td class="cu-header header">{{rowNames[1]}}</td>
+				<td ng-repeat="t in cuvars ">{{t.value}}</td>
+			</tr>
+			<tr>
+				<td class="ms-header header">{{rowNames[2]}}</td>
+				<td ng-repeat="t in mevars ">{{t.value}}</td>
+			</tr>
+
+		</table>
+		<table class="myTable2">
+			<tr>
+				<td class="sh1-header header">{{rowNames[3]}}</td>
+				<td ng-repeat="t in si1vars ">{{t.value}}</td>
+			</tr>
+			<tr>
+				<td class="sh2-header header">{{rowNames[4]}}</td>
+				<td ng-repeat="t in si2vars ">{{t.value}}</td>
+			</tr>
+			<tr>
+				<td class="sp-header header">{{rowNames[5]}}</td>
+				<td ng-repeat="t in spvars ">{{t.value}}</td>
 			</tr>
 		</table>
+		<div class="message"><ds-widget-clock theme="dark" show-secs="true" show-digital="true"></ds-widget-clock></div>
+		<div class="clock"><ds-widget-clock theme="dark" show-secs="true" show-analog="true"></ds-widget-clock></div>
 	</div>
 </section>

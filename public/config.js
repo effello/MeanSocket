@@ -12,7 +12,8 @@ var ApplicationConfiguration = (function() {
 		'ui.router',
 		'ui.bootstrap',
 		'ui.utils',
-		'btford.socket-io'
+		'btford.socket-io',
+		'ds.clock'
 	];
 
 	// Add a new vertical module

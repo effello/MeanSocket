@@ -38,8 +38,6 @@ var SocketServer = net.createServer( function(socket){
 			//console.log(''+count+' times got '+ data);
 			app.set('WinCCData', data);
 			count = count +1;
-		}else{
-			//socket.write('0');
 		}
 	});
 });
